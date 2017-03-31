@@ -27,6 +27,13 @@ class ViewController: UIViewController {
         
     }
 
+    @IBAction func performOperation(_ sender: UIButton) {
+        if let mathematicalSymbol = sender.currentTitle {
+            if mathematicalSymbol == "π" {
+                display.text = String(Double.pi)
+            }
+        }
+    }
 
 }
 
