@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FD0CF8301E8EC26300A60702 /* CalculatorBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD0CF82F1E8EC26300A60702 /* CalculatorBrain.swift */; };
 		FDF7A8681E8DA80C0009A7D0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF7A8671E8DA80C0009A7D0 /* AppDelegate.swift */; };
 		FDF7A86A1E8DA80C0009A7D0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF7A8691E8DA80C0009A7D0 /* ViewController.swift */; };
 		FDF7A86D1E8DA80C0009A7D0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FDF7A86B1E8DA80C0009A7D0 /* Main.storyboard */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FD0CF82F1E8EC26300A60702 /* CalculatorBrain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalculatorBrain.swift; path = Calculator/CalculatorBrain.swift; sourceTree = "<group>"; };
 		FDF7A8641E8DA80C0009A7D0 /* Calculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Calculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FDF7A8671E8DA80C0009A7D0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FDF7A8691E8DA80C0009A7D0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -38,6 +40,7 @@
 		FDF7A85B1E8DA80C0009A7D0 = {
 			isa = PBXGroup;
 			children = (
+				FD0CF82F1E8EC26300A60702 /* CalculatorBrain.swift */,
 				FDF7A8661E8DA80C0009A7D0 /* Calculator */,
 				FDF7A8651E8DA80C0009A7D0 /* Products */,
 			);
@@ -145,6 +148,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FD0CF8301E8EC26300A60702 /* CalculatorBrain.swift in Sources */,
 				FDF7A86A1E8DA80C0009A7D0 /* ViewController.swift in Sources */,
 				FDF7A8681E8DA80C0009A7D0 /* AppDelegate.swift in Sources */,
 			);
@@ -312,6 +316,7 @@
 				FDF7A8781E8DA80C0009A7D0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

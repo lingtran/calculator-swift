@@ -10,11 +10,11 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    @IBOutlet weak var display: UILabel!
+    @IBOutlet private weak var display: UILabel!
     
-    var userIsInTheMiddleOfTyping: Bool = false
+    private var userIsInTheMiddleOfTyping: Bool = false
     
-    @IBAction func touchDigit(_ sender: UIButton ) {
+    @IBAction private func touchDigit(_ sender: UIButton ) {
         let digit = sender.currentTitle!
         if userIsInTheMiddleOfTyping {
             let textCurrentlyInDisplay = display.text!
@@ -27,7 +27,7 @@ class ViewController: UIViewController {
         
     }
     
-    var displayValue: Double {
+    private var displayValue: Double {
         get {
             return Double(display.text!)!
         }
@@ -37,7 +37,7 @@ class ViewController: UIViewController {
         
     }
 
-    @IBAction func performOperation(_ sender: UIButton) {
+    @IBAction private func performOperation(_ sender: UIButton) {
         userIsInTheMiddleOfTyping = false
         if let mathematicalSymbol = sender.currentTitle {
             if mathematicalSymbol == "π" {
