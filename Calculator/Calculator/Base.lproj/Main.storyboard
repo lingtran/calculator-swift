@@ -136,7 +136,6 @@
                                 <state key="normal" title="π"/>
                                 <connections>
                                     <action selector="performOperation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="622-sV-PYd"/>
-                                    <action selector="touchDigit:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kzd-XY-gKg"/>
                                 </connections>
                             </button>
                         </subviews>
