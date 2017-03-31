@@ -9,7 +9,7 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
     @IBOutlet private weak var display: UILabel!
     
     private var userIsInTheMiddleOfTyping: Bool = false
@@ -22,7 +22,7 @@ class ViewController: UIViewController {
         } else {
             display.text = digit
         }
-
+        
         userIsInTheMiddleOfTyping = true
         
     }
@@ -36,18 +36,21 @@ class ViewController: UIViewController {
         }
         
     }
-
+    
+    private var brain = CalculatorBrain()
+    
     @IBAction private func performOperation(_ sender: UIButton) {
-        userIsInTheMiddleOfTyping = false
-        if let mathematicalSymbol = sender.currentTitle {
-            if mathematicalSymbol == "π" {
-                displayValue = Double.pi
-            } else if mathematicalSymbol == "√" {
-                displayValue = sqrt(displayValue)
-                
-            }
+        if userIsInTheMiddleOfTyping {
+            brain.setOperand(operand: displayValue)
+            userIsInTheMiddleOfTyping = false
         }
+        
+        if let mathematicalSymbol = sender.currentTitle {
+            brain.performOperational(symbol: mathematicalSymbol)
+        }
+        
+        displayValue = brain.result
     }
-
+    
 }
 
