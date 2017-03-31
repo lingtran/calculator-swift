@@ -8,10 +8,6 @@
 
 import Foundation
 
-func multiply (op1: Double, op2: Double) -> Double {
-    return op1 * op2
-}
-
 class CalculatorBrain {
     
     private var accumulator = 0.0
@@ -25,7 +21,10 @@ class CalculatorBrain {
         "e": Operation.Constant(M_E),
         "√": Operation.UnaryOperation(sqrt),
         "cos": Operation.UnaryOperation(cos),
-        "×": Operation.BinaryOperation(multiply),
+        "×": Operation.BinaryOperation({ $0 * $1 }),
+        "÷": Operation.BinaryOperation({ $0 / $1 }),
+        "+": Operation.BinaryOperation({ $0 + $1 }),
+        "-": Operation.BinaryOperation({ $0 - $1 }),
         "=": Operation.Equals
     ]
     
