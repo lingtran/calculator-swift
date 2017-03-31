@@ -8,6 +8,10 @@
 
 import Foundation
 
+func multiply (op1: Double, op2: Double) -> Double {
+    return op1 * op2
+}
+
 class CalculatorBrain {
     
     private var accumulator = 0.0
@@ -20,13 +24,15 @@ class CalculatorBrain {
         "π": Operation.Constant(Double.pi),
         "e": Operation.Constant(M_E),
         "√": Operation.UnaryOperation(sqrt),
-        "cos": Operation.UnaryOperation(cos)
+        "cos": Operation.UnaryOperation(cos),
+        "×": Operation.BinaryOperation(multiply),
+        "=": Operation.Equals
     ]
     
     enum Operation {
         case Constant(Double)
         case UnaryOperation((Double) -> Double)
-        case BinaryOperation
+        case BinaryOperation((Double, Double) -> Double)
         case Equals
     }
     
@@ -35,11 +41,23 @@ class CalculatorBrain {
             switch operation {
             case .Constant(let value): accumulator = value
             case .UnaryOperation(let function): accumulator = function(accumulator)
-            case .BinaryOperation: break
-            case .Equals: break
+            case .BinaryOperation(let function): pending = PendingBinaryOperationInfo(binaryFunction: function, firstOperand: accumulator)
+            case .Equals:
+                if pending != nil {
+                    accumulator = pending!.binaryFunction(pending!.firstOperand, accumulator)
+                    pending = nil
+                }
             }
         }
         
+    }
+    
+    
+    private var pending: PendingBinaryOperationInfo?
+    
+    struct PendingBinaryOperationInfo {
+        var binaryFunction: (Double, Double) -> Double
+        var firstOperand: Double
     }
     
     var result: Double {
