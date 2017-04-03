@@ -26,6 +26,8 @@ class CalculatorBrain {
     
     private var accumulator = 0.0
     
+    private var description: String?
+    
     func setOperand(operand: Double) {
         accumulator = operand
     }
