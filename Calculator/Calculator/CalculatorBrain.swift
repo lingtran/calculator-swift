@@ -26,12 +26,28 @@ class CalculatorBrain {
     
     private var accumulator = 0.0
     
-    private var description: String?
+    private var description: String = ""
     
-    private var isPartialResult: Bool = false
+    private var isPartialResult: Bool = true
     
     func setOperand(operand: Double) {
         accumulator = operand
+    }
+    
+    private func formatDescription(operand: String, mathematicalSymbol: String) {
+        description =  description + "\(operand) \(mathematicalSymbol) "
+    }
+    
+    func buildDescriptionWith(operand: String, mathematicalSymbol: String) -> String {
+        formatDescription(operand: operand, mathematicalSymbol: mathematicalSymbol)
+
+        if isPartialResult {
+            isPartialResult = false
+            return description + "..."
+        } else {
+           return description
+        }
+        
     }
     
     private var operations: Dictionary<String, Operation> = [
@@ -57,7 +73,6 @@ class CalculatorBrain {
         case BinaryOperation((Double, Double) -> Double)
         case Equals
     }
-    
 
     func performOperational(symbol: String) {
         if let operation = operations[symbol] {
@@ -77,14 +92,12 @@ class CalculatorBrain {
         
     }
     
-    
     private func executePendingBinaryOperation() {
         if pending != nil {
             accumulator = pending!.binaryFunction(pending!.firstOperand, accumulator)
             pending = nil
         }
     }
-    
     
     private var pending: PendingBinaryOperationInfo?
     
