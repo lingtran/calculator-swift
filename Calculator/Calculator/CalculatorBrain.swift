@@ -23,6 +23,7 @@ class CalculatorBrain {
         "√": Operation.UnaryOperation(sqrt),
         "cos": Operation.UnaryOperation(cos),
         "x^2": Operation.UnaryOperation({ pow($0, 2) }),
+        "1/x": Operation.UnaryOperation({ 1 / $0 }),
         "×": Operation.BinaryOperation({ $0 * $1 }),
         "÷": Operation.BinaryOperation({ $0 / $1 }),
         "+": Operation.BinaryOperation({ $0 + $1 }),
