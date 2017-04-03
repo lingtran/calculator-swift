@@ -28,6 +28,8 @@ class CalculatorBrain {
     
     private var description: String?
     
+    private var isPartialResult: Bool = false
+    
     func setOperand(operand: Double) {
         accumulator = operand
     }
