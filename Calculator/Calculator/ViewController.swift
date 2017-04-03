@@ -16,7 +16,6 @@ class ViewController: UIViewController {
     
     private let decimalPoint = "."
     
-    
     @IBAction private func touchDigit(_ sender: UIButton ) {
         let digit = sender.currentTitle!
        
