@@ -8,6 +8,20 @@
 
 import Foundation
 
+func factorialOf(x: Double) -> Double {
+    var result: Double
+    
+    if x == 1 {
+        result = 1
+    } else {
+        result = factorialOf(x: x-1) * x
+        
+    }
+    
+    return result
+    
+}
+
 class CalculatorBrain {
     
     private var accumulator = 0.0
@@ -24,6 +38,7 @@ class CalculatorBrain {
         "cos": Operation.UnaryOperation(cos),
         "x^2": Operation.UnaryOperation({ pow($0, 2) }),
         "1/x": Operation.UnaryOperation({ 1 / $0 }),
+        "x!": Operation.UnaryOperation(factorialOf),
         "×": Operation.BinaryOperation({ $0 * $1 }),
         "÷": Operation.BinaryOperation({ $0 / $1 }),
         "+": Operation.BinaryOperation({ $0 + $1 }),
@@ -39,6 +54,7 @@ class CalculatorBrain {
         case Equals
     }
     
+
     func performOperational(symbol: String) {
         if let operation = operations[symbol] {
             switch operation {
@@ -51,11 +67,12 @@ class CalculatorBrain {
                 pending = PendingBinaryOperationInfo(binaryFunction: function, firstOperand: accumulator)
             case .Equals:
                 executePendingBinaryOperation()
-               
+
             }
         }
         
     }
+    
     
     private func executePendingBinaryOperation() {
         if pending != nil {
