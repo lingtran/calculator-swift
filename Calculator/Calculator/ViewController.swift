@@ -16,26 +16,21 @@ class ViewController: UIViewController {
     
     private let decimalPoint = "."
     
+    
     @IBAction private func touchDigit(_ sender: UIButton ) {
         let digit = sender.currentTitle!
-        let textCurrentlyInDisplay = display.text!
-        
+       
         if userIsInTheMiddleOfTyping {
-            if digit != decimalPoint || display.text!.range(of: decimalPoint) == nil {
+            let textCurrentlyInDisplay = display.text!
+            
+            if digit == decimalPoint && textCurrentlyInDisplay.contains(decimalPoint) {
+                display.text = textCurrentlyInDisplay
+            } else {
                 display.text = textCurrentlyInDisplay + digit
-            } else if display.text!.range(of: decimalPoint) != nil {
-                display.text = textCurrentlyInDisplay + digit
-            }
-            else {
-                display.text = textCurrentlyInDisplay + "."
             }
             
         } else {
-            if digit == decimalPoint {
-                display.text = "\(textCurrentlyInDisplay).\(digit)"
-            } else {
-                display.text = digit
-            }
+            display.text = digit
         }
         
         userIsInTheMiddleOfTyping = true
