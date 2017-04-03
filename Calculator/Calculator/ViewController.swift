@@ -10,7 +10,9 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    @IBOutlet private weak var display: UILabel!
+    @IBOutlet weak var descriptionField: UILabel!
+    
+    @IBOutlet weak var display: UILabel!
     
     private var userIsInTheMiddleOfTyping: Bool = false
     
