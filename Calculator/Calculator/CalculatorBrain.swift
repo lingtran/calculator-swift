@@ -41,10 +41,6 @@ class CalculatorBrain {
         accumulator = operand
     }
     
-    private func formatDescription() {
-        description =  descriptionHistory.joined(separator: " ")
-    }
-    
     private func addOperandToDescriptionHistory(operand: String) {
         descriptionHistory.append(operand)
     }
@@ -59,17 +55,23 @@ class CalculatorBrain {
         }
     }
     
-    func buildDescriptionWith(mathematicalSymbol: String) -> String {
-        addOperationToDescriptionHistory(mathematicalSymbol: mathematicalSymbol)
-        formatDescription()
-
+    private func prepareDescription() {
+        description =  descriptionHistory.joined(separator: " ")
+    }
+    
+    private func formatFinishingTouchesToDescription() -> String {
         if isPartialResult {
             isPartialResult = false
             return description + ellipsis
         } else {
-           return description + equalSign
+            return description + equalSign
         }
-        
+    }
+    
+    func buildDescriptionWith(mathematicalSymbol: String) -> String {
+        addOperationToDescriptionHistory(mathematicalSymbol: mathematicalSymbol)
+        prepareDescription()
+        return formatFinishingTouchesToDescription()
     }
     
     private var operations: Dictionary<String, Operation> = [
