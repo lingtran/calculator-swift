@@ -50,12 +50,12 @@ class CalculatorBrain {
     }
     
     private func addOperationToDescriptionHistory(mathematicalSymbol: String) {
-        if mathematicalSymbol != equalSign {
-            descriptionHistory.append(mathematicalSymbol)
-        } else if mathematicalSymbol == "√" {
+        if mathematicalSymbol == "√" && isPartialResult == false {
             descriptionHistory.insert(mathematicalSymbol, at: 0)
             descriptionHistory.insert("(", at: 1)
             descriptionHistory.append(")")
+        } else if mathematicalSymbol != equalSign {
+            descriptionHistory.append(mathematicalSymbol)
         }
     }
     
