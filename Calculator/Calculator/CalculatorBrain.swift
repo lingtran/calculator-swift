@@ -47,19 +47,29 @@ class CalculatorBrain {
     
     private func addOperationToDescriptionHistory(mathematicalSymbol: String) {
         if mathematicalSymbol == "√" && isPartialResult {
-            var mostRecentOperand = descriptionHistory[(descriptionHistory.count - 1)]
-            mostRecentOperand = "(\(mostRecentOperand))"
-            descriptionHistory[(descriptionHistory.count - 1)] = mostRecentOperand
+            wrapMostRecentOperandWithParentheses()
             descriptionHistory.insert(mathematicalSymbol, at: (descriptionHistory.count - 1))
         } else if mathematicalSymbol == "√" && isPartialResult == false {
+            wrapSequenceInParentheses()
             descriptionHistory.insert(mathematicalSymbol, at: 0)
-            descriptionHistory.insert("(", at: 1)
-            descriptionHistory.append(")")
         } else if mathematicalSymbol != equalSign {
             descriptionHistory.append(mathematicalSymbol)
         } else {
             isPartialResult = false
         }
+    }
+    
+    private func wrapMostRecentOperandWithParentheses() {
+        let indexOfLast = descriptionHistory.count - 1
+        var mostRecentOperand = descriptionHistory[indexOfLast]
+        
+        mostRecentOperand = "(\(mostRecentOperand))"
+        descriptionHistory[indexOfLast] = mostRecentOperand
+    }
+    
+    private func wrapSequenceInParentheses() {
+        descriptionHistory.insert("(", at: 0)
+        descriptionHistory.append(")")
     }
     
     private func prepareDescription() {
