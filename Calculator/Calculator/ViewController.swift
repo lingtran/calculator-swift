@@ -58,7 +58,7 @@ class ViewController: UIViewController {
         }
         
         if let mathematicalSymbol = sender.currentTitle {
-            descriptionField.text = brain.buildDescriptionWith(mathematicalSymbol: String(mathematicalSymbol))
+            descriptionField.text = brain.buildDescriptionWith(mathematicalSymbol:mathematicalSymbol)
             brain.performOperational(symbol: mathematicalSymbol)
         }
         
