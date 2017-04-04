@@ -50,6 +50,8 @@ class CalculatorBrain {
             descriptionHistory.insert(mathematicalSymbol, at: 0)
             descriptionHistory.insert("(", at: 1)
             descriptionHistory.append(")")
+        } else if mathematicalSymbol == "√" && isPartialResult {
+            descriptionHistory.append(mathematicalSymbol)
         } else if mathematicalSymbol != equalSign {
             descriptionHistory.append(mathematicalSymbol)
         }
