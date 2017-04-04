@@ -34,12 +34,12 @@ class CalculatorBrain {
         accumulator = operand
     }
     
-    private func formatDescription(operand: String, mathematicalSymbol: String) {
-        description =  description + "\(operand) \(mathematicalSymbol) "
+    private func formatDescription(mathematicalSymbol: String) {
+        description =  description + "\(accumulator) \(mathematicalSymbol) "
     }
     
-    func buildDescriptionWith(operand: String, mathematicalSymbol: String) -> String {
-        formatDescription(operand: operand, mathematicalSymbol: mathematicalSymbol)
+    func buildDescriptionWith(mathematicalSymbol: String) -> String {
+        formatDescription(mathematicalSymbol: mathematicalSymbol)
 
         if isPartialResult {
             isPartialResult = false
