@@ -46,14 +46,18 @@ class CalculatorBrain {
     }
     
     private func addOperationToDescriptionHistory(mathematicalSymbol: String) {
-        if mathematicalSymbol == "√" && isPartialResult == false {
+        if mathematicalSymbol == "√" && isPartialResult {
+            descriptionHistory.insert(mathematicalSymbol, at: 2)
+            descriptionHistory.insert("(", at: 3)
+            descriptionHistory.append(")")
+        } else if mathematicalSymbol == "√" && isPartialResult == false {
             descriptionHistory.insert(mathematicalSymbol, at: 0)
             descriptionHistory.insert("(", at: 1)
             descriptionHistory.append(")")
-        } else if mathematicalSymbol == "√" && isPartialResult {
-            descriptionHistory.append(mathematicalSymbol)
         } else if mathematicalSymbol != equalSign {
             descriptionHistory.append(mathematicalSymbol)
+        } else {
+            isPartialResult = false
         }
     }
     
@@ -63,7 +67,6 @@ class CalculatorBrain {
     
     private func formatFinishingTouchesToDescription() -> String {
         if isPartialResult {
-            isPartialResult = false
             return description + ellipsis
         } else {
             return description + equalSign
