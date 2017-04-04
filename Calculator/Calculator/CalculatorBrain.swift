@@ -26,26 +26,48 @@ class CalculatorBrain {
     
     private var accumulator = 0.0
     
-    private var description: String = ""
+    private var descriptionHistory = [String]()
+    
+    private var description = ""
     
     private var isPartialResult: Bool = true
     
+    private let ellipsis = "..."
+    
+    private let equalSign = "="
+    
     func setOperand(operand: Double) {
+        addOperandToDescriptionHistory(operand: String(operand))
         accumulator = operand
     }
     
-    private func formatDescription(mathematicalSymbol: String) {
-        description =  description + "\(accumulator) \(mathematicalSymbol) "
+    private func formatDescription() {
+        description =  descriptionHistory.joined(separator: " ")
+    }
+    
+    private func addOperandToDescriptionHistory(operand: String) {
+        descriptionHistory.append(operand)
+    }
+    
+    private func addOperationToDescriptionHistory(mathematicalSymbol: String) {
+        if mathematicalSymbol != equalSign {
+            descriptionHistory.append(mathematicalSymbol)
+        } else if mathematicalSymbol == "√" {
+            descriptionHistory.insert(mathematicalSymbol, at: 0)
+            descriptionHistory.insert("(", at: 1)
+            descriptionHistory.append(")")
+        }
     }
     
     func buildDescriptionWith(mathematicalSymbol: String) -> String {
-        formatDescription(mathematicalSymbol: mathematicalSymbol)
+        addOperationToDescriptionHistory(mathematicalSymbol: mathematicalSymbol)
+        formatDescription()
 
         if isPartialResult {
             isPartialResult = false
-            return description + "..."
+            return description + ellipsis
         } else {
-           return description
+           return description + equalSign
         }
         
     }
