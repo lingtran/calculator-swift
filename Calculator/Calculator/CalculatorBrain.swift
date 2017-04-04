@@ -11,7 +11,7 @@ import Foundation
 func factorialOf(x: Double) -> Double {
     var result: Double
     
-    if x == 1 {
+    if [0, 1].contains(x){
         result = 1
     } else {
         result = factorialOf(x: x-1) * x
