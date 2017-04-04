@@ -113,7 +113,7 @@ class CalculatorBrain {
         case BinaryOperation((Double, Double) -> Double)
         case Equals
     }
-
+    
     func performOperational(symbol: String) {
         if let operation = operations[symbol] {
             switch operation {
@@ -126,7 +126,7 @@ class CalculatorBrain {
                 pending = PendingBinaryOperationInfo(binaryFunction: function, firstOperand: accumulator)
             case .Equals:
                 executePendingBinaryOperation()
-
+                
             }
         }
         
