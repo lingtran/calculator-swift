@@ -104,7 +104,8 @@ class CalculatorBrain {
         "+": Operation.BinaryOperation({ $0 + $1 }),
         "-": Operation.BinaryOperation({ $0 - $1 }),
         "^": Operation.BinaryOperation({ pow($0, $1) }),
-        "=": Operation.Equals
+        "=": Operation.Equals,
+        "C": Operation.Clear
     ]
     
     private enum Operation {
@@ -112,6 +113,7 @@ class CalculatorBrain {
         case UnaryOperation((Double) -> Double)
         case BinaryOperation((Double, Double) -> Double)
         case Equals
+        case Clear
     }
     
     func performOperational(symbol: String) {
@@ -128,6 +130,8 @@ class CalculatorBrain {
                 pending = PendingBinaryOperationInfo(binaryFunction: function, firstOperand: accumulator)
             case .Equals:
                 executePendingBinaryOperation()
+            case .Clear:
+                clear()
                 
             }
         }
@@ -172,6 +176,9 @@ class CalculatorBrain {
     func clear() {
         accumulator = 0.0
         pending = nil
+        description = ""
+        descriptionHistory.removeAll()
+        isPartialResult = true
         internalProgram.removeAll()
     }
     
