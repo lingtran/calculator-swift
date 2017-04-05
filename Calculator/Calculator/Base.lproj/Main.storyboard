@@ -49,7 +49,7 @@
                                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="performOperation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="D0w-Rj-zZg"/>
+                                                    <action selector="clear:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uA1-5E-t4o"/>
                                                 </connections>
                                             </button>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="qLr-UP-Zod">

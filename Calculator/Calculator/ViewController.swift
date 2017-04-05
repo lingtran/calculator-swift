@@ -65,5 +65,11 @@ class ViewController: UIViewController {
         displayValue = brain.result
     }
     
+    @IBAction func clear(_ sender: UIButton) {
+        brain.performOperational(symbol: sender.currentTitle!)
+        displayValue = brain.result
+        descriptionField.text = String(brain.result)
+        userIsInTheMiddleOfTyping = false
+    }
 }
 
