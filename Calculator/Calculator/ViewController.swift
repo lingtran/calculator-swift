@@ -18,7 +18,6 @@ class ViewController: UIViewController {
     
     private let decimalPoint = "."
     
-    
     @IBAction private func touchDigit(_ sender: UIButton ) {
         let digit = sender.currentTitle!
        
@@ -51,6 +50,12 @@ class ViewController: UIViewController {
     
     private var brain = CalculatorBrain()
     
+    private func resetCalculator() {
+        displayValue = 0.0
+        descriptionField.text = String(0.0)
+        userIsInTheMiddleOfTyping = false
+    }
+    
     @IBAction private func performOperation(_ sender: UIButton) {
         if userIsInTheMiddleOfTyping {
             brain.setOperand(operand: displayValue)
@@ -67,9 +72,7 @@ class ViewController: UIViewController {
     
     @IBAction func clear(_ sender: UIButton) {
         brain.performOperational(symbol: sender.currentTitle!)
-        displayValue = brain.result
-        descriptionField.text = String(brain.result)
-        userIsInTheMiddleOfTyping = false
+        resetCalculator()
     }
 }
 
