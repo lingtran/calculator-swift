@@ -9,17 +9,7 @@
 import Foundation
 
 func factorialOf(x: Double) -> Double {
-    var result: Double
-    
-    if [0, 1].contains(x){
-        result = 1
-    } else {
-        result = factorialOf(x: x-1) * x
-        
-    }
-    
-    return result
-    
+    return [0,1].contains(x) ? 1 : factorialOf(x: x-1) * x
 }
 
 class CalculatorBrain {
